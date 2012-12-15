@@ -67,6 +67,13 @@ public class HandlerUnits {
         return unitsSelected;
     }
     
+    public boolean isOccupied(int x, int y) {
+        if(unitArray[x][y] != null) {
+            return true;
+        }
+        return false;
+    }
+    
     public BufferedImage getSprite(int id) {
         switch(id) {
             case 1:
@@ -204,7 +211,6 @@ public class HandlerUnits {
          * You can test if it works by yourself by modifying the "currentHealth" var in UnitSword.java
          *      Or just do in a line below : unitToMeasure.currentHealth = 40 (for example) (and don't forget to remove it :p)
          */
-        System.out.println("HEALTH=" + (32 * unitToMeasure.getCurrentHealth()) / unitToMeasure.getMaxHealth());
         greenWidth = (int) (( (32 * unitToMeasure.getCurrentHealth()) / unitToMeasure.getMaxHealth()));
         
         g.setColor(Color.GREEN);
