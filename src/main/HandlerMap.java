@@ -14,7 +14,7 @@ public class HandlerMap {
     protected BufferedImage currentView;
     private boolean dirty = true;
     private boolean mapLoaded = false;
-
+    
     public HandlerMap(GuiGame parent) {
         this.parent = parent;
         currentMapArray = new int[15][20];

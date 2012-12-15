@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import resources.Resources;
+import main.Unit;
 
 public class HandlerUnits {
     
@@ -197,11 +198,17 @@ public class HandlerUnits {
         Graphics g = healthBar.createGraphics();
         
         int greenWidth = 0;
-        System.out.println("health:" + (32 / unitToMeasure.getMaxHealth()) * unitToMeasure.getCurrentHealth());
-        greenWidth = (int) ((32 / unitToMeasure.getMaxHealth()) * unitToMeasure.getCurrentHealth());
+        /* 
+         * Changed the calculations for the healthbars.
+         * It just does (32*curHealth) / maxHealth, so it gives the width of the healthbar to use.
+         * You can test if it works by yourself by modifying the "currentHealth" var in UnitSword.java
+         *      Or just do in a line below : unitToMeasure.currentHealth = 40 (for example) (and don't forget to remove it :p)
+         */
+        System.out.println("HEALTH=" + (32 * unitToMeasure.getCurrentHealth()) / unitToMeasure.getMaxHealth());
+        greenWidth = (int) (( (32 * unitToMeasure.getCurrentHealth()) / unitToMeasure.getMaxHealth()));
         
         g.setColor(Color.GREEN);
-        g.fillRect(0, 0, /*greenWidth*/ 20, 4);
+        g.fillRect(0, 0, greenWidth, 4);
         
         return healthBar;
     }
