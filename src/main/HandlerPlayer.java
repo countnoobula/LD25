@@ -58,6 +58,8 @@ public class HandlerPlayer {
         System.out.println(x + ";" + y);
         if(parent.handlerUnits.tileHasUnit(x, y)) {
             parent.handlerUnits.selectUnit(x, y);
+        } else {
+            parent.handlerUnits.deselectAll();
         }
         
         parent.getMainWindow().repaint();
@@ -77,6 +79,7 @@ public class HandlerPlayer {
     
     public void commandSpot(int x, int y) {
         if(parent.handlerUnits.isUnitsSelected()) {
+            parent.handlerUnits.moveSelected((x+parent.handlerPlayer.xPos), (y+parent.handlerPlayer.yPos));
             
         }
     }

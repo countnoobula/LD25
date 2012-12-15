@@ -42,7 +42,7 @@ public class Unit {
     }
     
     public void move(int x, int y) {
-        new Thread(new HandlerPath(parent.getGuiGame(), mapID, unitX, unitY, x, y));
+        new Thread(new HandlerPath(parent.getGuiGame(), mapID, unitX, unitY, x, y)).start();
     }
     
     public void select() {
