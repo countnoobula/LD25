@@ -1,6 +1,5 @@
 package main;
 
-import java.awt.Image;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import resources.Resources;
@@ -25,7 +24,13 @@ public class TileWater extends Tile {
         return false;
     }
 
+    @Override
     public int getID() {
         return 1;
+    }
+    
+    @Override
+    public String getName() {
+        return "Water Tile";
     }
 }

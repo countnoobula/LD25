@@ -2,7 +2,6 @@ package main;
 
 import java.awt.Graphics;
 import javax.swing.JFrame;
-import resources.Resources;
 
 public class MainWindow extends JFrame {
 

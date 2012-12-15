@@ -21,4 +21,8 @@ public class Tile {
     public Image getTexture() {
         return texture;
     }
+    
+    public String getName() {
+        return "";
+    }
 }

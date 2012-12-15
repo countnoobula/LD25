@@ -4,16 +4,18 @@ import java.util.HashMap;
 
 public class HandlerTiles {
     
-    protected MainWindow parent;
+    protected GuiGame parent;
     private HashMap<Integer, Tile> tileMap = new HashMap<>();
     
-    public HandlerTiles(MainWindow parent) {
+    public HandlerTiles(GuiGame parent) {
         this.parent = parent;
+        new TileWater(this);
     }
     
     public void registerTile(Tile tileToRegister) {
         if(tileMap.get(tileToRegister.getID()) == null) {
             tileMap.put(tileToRegister.getID(), tileToRegister);
+            System.out.println(tileToRegister.getName() + " registered");
         }
     }
     
@@ -22,6 +24,6 @@ public class HandlerTiles {
     }
     
     public MainWindow getMainWindow() {
-        return parent;
+        return parent.getMainWindow();
     }
 }
