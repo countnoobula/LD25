@@ -10,7 +10,10 @@ public class HandlerPlayer {
     private boolean selectedTile = false;
     private int selectedTileX = 0;
     private int selectedTileY = 0;
-    
+    private boolean commandTile = false;
+    private int commandTileX = 0;
+    private int commandTileY = 0;
+
     public HandlerPlayer(GuiGame parent) {
         this.parent = parent;
     }
@@ -36,25 +39,45 @@ public class HandlerPlayer {
         parent.handlerMap.makeDirty();
     }
 
-    public void moveRight() {        
+    public void moveRight() {
         if(yPos != 49) {
             yPos++;
         }
         parent.handlerMap.makeDirty();
     }
-    
+
     public boolean hasSelectedTile() {
         return selectedTile;
     }
-    
+
     public Point getSelectedTile() {
         return new Point(selectedTileX, selectedTileY);
     }
-    
+
     public void selectSpot(int x, int y) {
-        selectedTileX = x; 
-        selectedTileY = y;
-        selectedTile = true;
+        System.out.println(x + ";" + y);
+        if(parent.handlerUnits.tileHasUnit(x, y)) {
+            parent.handlerUnits.selectUnit(x, y);
+        }
+        
         parent.getMainWindow().repaint();
+    }
+    
+    public void clearSelection() {
+       selectedTile = false;
+    }
+
+    public boolean hasCommandTile() {
+        return commandTile;
+    }
+    
+    public Point getCommandTile() {
+        return new Point(commandTileX, commandTileY);
+    }
+    
+    public void commandSpot(int x, int y) {
+        if(parent.handlerUnits.isUnitsSelected()) {
+            
+        }
     }
 }

@@ -6,23 +6,29 @@ import java.awt.event.MouseListener;
 public class InputMouse implements MouseListener {
 
     protected MainWindow parent;
-    
+
     public InputMouse(MainWindow parent) {
         this.parent = parent;
     }
-    
+
     @Override
     public void mouseClicked(MouseEvent e) {
-        
         int mouseX = e.getPoint().x;
         int mouseY = e.getPoint().y;
-        int tempX = mouseX%32;
-        int tempY = mouseY%32;
-        mouseX = mouseX-tempX;
-        mouseX = mouseX/32;
-        mouseY = mouseY-tempY;
-        mouseY = mouseY/32;
-        parent.screenGame.handlerPlayer.selectSpot(mouseX, mouseY);
+        int tempX = mouseX % 32;
+        int tempY = mouseY % 32;
+        mouseX = mouseX - tempX;
+        mouseX = mouseX / 32;
+        mouseY = mouseY - tempY;
+        mouseY = mouseY / 32;
+        if(e.getButton() == 1) {
+            parent.screenGame.handlerPlayer.selectSpot(mouseX, mouseY);
+            return;
+        }
+        if(e.getButton() == 3) {
+            parent.screenGame.handlerPlayer.commandSpot(mouseX, mouseY);
+            return;
+        }
     }
 
     @Override
@@ -40,5 +46,4 @@ public class InputMouse implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
     }
-
 }
