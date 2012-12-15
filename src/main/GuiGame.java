@@ -15,6 +15,10 @@ public class GuiGame extends GuiScreen {
     
     @Override
     public void render(Graphics g) {//32x32 blocks
+        if(handlerMap.isDirty()) {
+            handlerMap.renderCurrentView();
+        }
+        
         int playerX = handlerPlayer.xPos * 32;
         int playerY = handlerPlayer.yPos * 32;
         
@@ -22,6 +26,5 @@ public class GuiGame extends GuiScreen {
         g.fillRect(0, 0, 640, 480);
 
         g.drawImage(handlerMap.getCurrentView(), 0, 0, parent);        
-        g.drawImage(handlerPlayer.getAvatar(), playerX, playerY, parent);
     }
 }
