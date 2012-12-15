@@ -8,8 +8,8 @@ import resources.Resources;
 public class HandlerPlayer {
 
     protected GuiGame parent;
-    protected int xPos = 0;
-    protected int yPos = 0;
+    protected int xPos = 2;
+    protected int yPos = 2;
     protected Image playerAvatar;
 
     public HandlerPlayer(GuiGame parent) {

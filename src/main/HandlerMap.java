@@ -23,10 +23,15 @@ public class HandlerMap {
                 currentMapArray[i][j] = 1;
             }
         }
+        currentMapArray[2][2] = 2;
+        currentMapArray[2][3] = 2;
+        currentMapArray[2][4] = 2;
+        currentMapArray[2][5] = 2;
+        currentMapArray[3][3] = 2;
     }
     
     public boolean canWalk(int x, int y) {
-        return true;
+        return parent.handlerTiles.getTile(currentMapArray[y][x]).isPassable();
     }
 
     public BufferedImage getCurrentView() {

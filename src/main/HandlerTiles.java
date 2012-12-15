@@ -10,6 +10,7 @@ public class HandlerTiles {
     public HandlerTiles(GuiGame parent) {
         this.parent = parent;
         new TileWater(this);
+        new TileConcrete(this);
     }
     
     public void registerTile(Tile tileToRegister) {
