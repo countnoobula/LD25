@@ -9,6 +9,9 @@ public class HandlerMap {
     }
 
     public boolean canWalk(int x, int y) {
+        if(x == 2 && y == 1) {
+            return false;
+        }
         return true;
     }
 }

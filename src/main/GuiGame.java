@@ -21,6 +21,8 @@ public class GuiGame extends GuiScreen {
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, 640, 480);
         
-        g.drawImage(parent.resources.getTexture(Resources.PLAYER), playerX, playerY, 32, 32, parent);
+        g.drawImage(parent.resources.getTexture(Resources.TILE_WATER), 64, 32, parent);
+        
+        g.drawImage(parent.resources.getTexture(Resources.PLAYER), playerX, playerY, parent);
     }
 }
