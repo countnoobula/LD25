@@ -7,7 +7,6 @@ import resources.Resources;
 public class MainWindow extends JFrame {
 
     protected int mode = Defines.GAME;
-    protected Resources resources = new Resources(this);
     protected InputKeyboard input = new InputKeyboard(this);
     protected GuiMenu screenMenu = new GuiMenu(this);
     protected GuiGame screenGame = new GuiGame(this);

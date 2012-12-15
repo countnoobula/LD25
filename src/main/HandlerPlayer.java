@@ -1,13 +1,26 @@
 package main;
 
+import java.awt.Image;
+import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
+import resources.Resources;
+
 public class HandlerPlayer {
 
     protected GuiGame parent;
     protected int xPos = 0;
     protected int yPos = 0;
+    protected Image playerAvatar;
 
     public HandlerPlayer(GuiGame parent) {
         this.parent = parent;
+        try {
+            playerAvatar = ImageIO.read(Resources.class.getResourceAsStream("Player.png"));
+        } catch(Exception ex) {
+            JOptionPane.showMessageDialog(null, "Failed to load player resources", "Resource failure", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+            parent.getMainWindow().quitGame();
+        }
     }
 
     public void moveUp() {
@@ -32,5 +45,9 @@ public class HandlerPlayer {
         if(parent.handlerMap.canWalk(xPos + 1, yPos)) {
             xPos++;
         }
+    }
+    
+    public Image getAvatar() {
+        return playerAvatar;
     }
 }

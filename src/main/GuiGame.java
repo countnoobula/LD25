@@ -2,7 +2,6 @@ package main;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import resources.Resources;
 
 public class GuiGame extends GuiScreen {
 
@@ -12,7 +11,7 @@ public class GuiGame extends GuiScreen {
     public GuiGame(MainWindow parent) {
         this.parent = parent;
     }
-
+    
     @Override
     public void render(Graphics g) {//32x32 blocks
         int playerX = handlerPlayer.xPos * 32;
@@ -21,8 +20,12 @@ public class GuiGame extends GuiScreen {
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, 640, 480);
         
-        g.drawImage(parent.resources.getTexture(Resources.TILE_WATER), 64, 32, parent);
+        for(int rows = 0; rows < 15; rows++) {
+            for(int cols = 0; cols < 20; cols++) {
+                //g.drawImage(parent.resources.getTexture(Resources.TILE_WATER), rows * 32, cols * 32, parent);
+            }
+        }
         
-        g.drawImage(parent.resources.getTexture(Resources.PLAYER), playerX, playerY, parent);
+        g.drawImage(handlerPlayer.getAvatar(), playerX, playerY, parent);
     }
 }
