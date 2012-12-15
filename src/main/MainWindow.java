@@ -2,10 +2,12 @@ package main;
 
 import java.awt.Graphics;
 import javax.swing.JFrame;
+import resources.Resources;
 
 public class MainWindow extends JFrame {
 
     protected int mode = Defines.GAME;
+    protected Resources resources = new Resources(this);
     protected InputKeyboard input = new InputKeyboard(this);
     protected GuiMenu screenMenu = new GuiMenu(this);
     protected GuiGame screenGame = new GuiGame(this);
@@ -18,6 +20,8 @@ public class MainWindow extends JFrame {
         setMinimumSize(Defines.PANEL_SIZE);
         setPreferredSize(Defines.PANEL_SIZE);
         setMaximumSize(Defines.PANEL_SIZE);
+        setLocationRelativeTo(null);
+        setUndecorated(true);
         pack();
         setVisible(true);
     }
@@ -29,7 +33,7 @@ public class MainWindow extends JFrame {
     
     public void quitGame() {
         //to be filled in
-        System.out.println();
+        System.exit(0);
     }
     
     @Override
@@ -39,10 +43,10 @@ public class MainWindow extends JFrame {
                 screenGame.render(g);
                 break;
             case Defines.MENU:
-                screenGame.render(g);
+                screenMenu.render(g);
                 break;
             default:
-                screenGame.render(g);
+                screenMenu.render(g);
                 break;
         }
     }

@@ -43,6 +43,7 @@ public class InputKeyboard implements KeyListener {
                             parent.screenGame.handlerPlayer.moveRight();
                             break;
                         case 27: //esc
+                            parent.changeToMenu();
                             break;
                         case 32: //space
                             break;
@@ -57,7 +58,7 @@ public class InputKeyboard implements KeyListener {
                     break;
             }
             previousKeyTime = System.currentTimeMillis();
-            System.out.println(previousKeyTime);
+            parent.repaint();
         }
     }
 }
