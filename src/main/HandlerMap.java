@@ -122,12 +122,12 @@ public class HandlerMap {
         currentView = new BufferedImage(640, 480, BufferedImage.TYPE_INT_RGB);
         Graphics g = currentView.getGraphics();
         if(mapLoaded) {
-            for(int rows = 0; rows < 20; rows++) {
-                for(int cols = 0; cols < 15; cols++) {
-                    if(parent.handlerTiles.getTile(currentMapArray[cols][rows]) != null) {
-                        g.drawImage(parent.handlerTiles.getTile(currentMapArray[cols][rows]).getTexture(), rows * 32, cols * 32, parent);
+            for(int cols = 0; cols < 20; cols++) {
+                for(int rows = 0; rows < 15; rows++) {
+                    if(parent.handlerTiles.getTile(currentMapArray[rows][cols]) != null) {
+                        g.drawImage(parent.handlerTiles.getTile(currentMapArray[rows][cols]).getTexture(), cols * 32, rows * 32, parent);
                     } else {
-                        System.out.println(cols + ";" + rows + " is null.");
+                        System.out.println(rows + ";" + cols + " is null.");
                     }
                 }
             }
