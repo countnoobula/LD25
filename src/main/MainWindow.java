@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 
 public class MainWindow extends JFrame {
 
-    protected int mode = Defines.GAME;
+    protected int mode = Defines.MENU;
     protected InputKeyboard inputKeyboard = new InputKeyboard(this);
     protected InputMouse inputMouse = new InputMouse(this);
     protected GuiMenu screenMenu = new GuiMenu(this);
@@ -31,13 +31,17 @@ public class MainWindow extends JFrame {
         mode = Defines.MENU;
     }
     
+    public void startGame() {
+        //to be filled in
+        mode = Defines.GAME;
+    }
+    
     public void quitGame() {
         //to be filled in
         System.exit(0);
     }
     
     public void runTick() {
-        //in here we execute each turn
     }
     
     @Override

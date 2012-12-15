@@ -55,6 +55,9 @@ public class InputKeyboard implements KeyListener {
                         case 27:
                             parent.quitGame();
                             break;
+                        case 32:
+                            parent.startGame();
+                            break;
                     }
                     break;
             }
