@@ -29,7 +29,7 @@ public class HandlerUnits {
         unitArray = new Unit[50][50];
         unitTypeMap = new HashMap<>();
         unitMap = new HashMap<>();
-        
+
         try {
             spriteSword = ImageIO.read(Resources.class.getResourceAsStream("UnitSword.png"));
             spriteArcher = ImageIO.read(Resources.class.getResourceAsStream("UnitArcher.png"));
@@ -50,7 +50,7 @@ public class HandlerUnits {
     }
 
     public boolean isUnitsSelected() {
-        return false;
+        return false; //must do
     }
 
     public BufferedImage getSprite(int id) {
@@ -66,20 +66,20 @@ public class HandlerUnits {
     }
 
     public boolean tileHasUnit(int x, int y) {
-        if(unitArray[y][x] != null) {
+        if(currentUnitArray[y][x] != null) {
             return true;
         }
         return false;
     }
 
     public void selectUnit(int x, int y) {
-        unitArray[y][x].select();
+        currentUnitArray[y][x].select();
     }
 
     public Unit getUnit(int x, int y) {
         return unitArray[x][y];
     }
-    
+
     public Unit getUnitType(int id) {
         return unitTypeMap.get(id);
     }
@@ -122,6 +122,7 @@ public class HandlerUnits {
     }
 
     public void render(Graphics g) {
+        updateUnitPositions();
         updateCurrentUnits();
         renderCurrentUnits();
         g.drawImage(unitRender, 0, 0, parent.getMainWindow());
@@ -131,22 +132,52 @@ public class HandlerUnits {
         unitArray = null;
         unitArray = new Unit[50][50];
     }
-    
+
     public void updateUnitPositions() {
         Set keys = unitMap.keySet();
-        Iterator i = keys.iterator(); 
-        
+        Iterator i = keys.iterator();
+
         clearUnitArray();
-        
+
         int entryKey = 0;
         Unit entryUnit = null;
         while(i.hasNext()) {
-            entryKey =  (int)i.next();
+            entryKey = (int) i.next();
             entryUnit = unitMap.get(entryKey);
             unitArray[entryUnit.getLocation().x][entryUnit.getLocation().y] = entryUnit;
         }
     }
-    
+
+    public void deselectAll() {
+        Set keys = unitMap.keySet();
+        Iterator i = keys.iterator();
+
+        int entryKey = 0;
+        Unit entryUnit = null;
+        while(i.hasNext()) {
+            entryKey = (int) i.next();
+            entryUnit = unitMap.get(entryKey);
+            unitArray[entryUnit.getLocation().x][entryUnit.getLocation().y].deselect();
+        }
+    }
+
+    public void moveSelected(int x, int y) {
+        if(isUnitsSelected()) {
+            Set keys = unitMap.keySet();
+            Iterator i = keys.iterator();
+
+            int entryKey = 0;
+            Unit entryUnit = null;
+            while(i.hasNext()) {
+                entryKey = (int) i.next();
+                entryUnit = unitMap.get(entryKey);
+                if(unitArray[entryUnit.getLocation().x][entryUnit.getLocation().y].isSelected()) {
+                    unitArray[entryUnit.getLocation().x][entryUnit.getLocation().y].move(x, y);
+                }
+            }
+        }
+    }
+
     public GuiGame getGuiGame() {
         return parent;
     }
