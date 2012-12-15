@@ -6,7 +6,8 @@ import javax.swing.JFrame;
 public class MainWindow extends JFrame {
 
     protected int mode = Defines.GAME;
-    protected InputKeyboard input = new InputKeyboard(this);
+    protected InputKeyboard inputKeyboard = new InputKeyboard(this);
+    protected InputMouse inputMouse = new InputMouse(this);
     protected GuiMenu screenMenu = new GuiMenu(this);
     protected GuiGame screenGame = new GuiGame(this);
 
@@ -14,7 +15,8 @@ public class MainWindow extends JFrame {
         super(Defines.WINDOW_TITLE);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         add(new GuiGame(this));
-        addKeyListener(input);
+        addKeyListener(inputKeyboard);
+        addMouseListener(inputMouse);
         setMinimumSize(Defines.PANEL_SIZE);
         setPreferredSize(Defines.PANEL_SIZE);
         setMaximumSize(Defines.PANEL_SIZE);
@@ -32,6 +34,10 @@ public class MainWindow extends JFrame {
     public void quitGame() {
         //to be filled in
         System.exit(0);
+    }
+    
+    public void runTick() {
+        //in here we execute each turn
     }
     
     @Override

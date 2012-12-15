@@ -26,7 +26,7 @@ public class InputKeyboard implements KeyListener {
     }
 
     public void parseInput(int keyCode) { //due to special symbols
-        if((System.currentTimeMillis() - previousKeyTime) > 200) {
+        if((System.currentTimeMillis() - previousKeyTime) > 50) {
             switch(parent.mode) {
                 case Defines.GAME:
                     switch(keyCode) {
