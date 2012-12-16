@@ -30,6 +30,13 @@ public class Unit {
         return currentHealth;
     }
 
+    public void inflictDamage(int damageAmount) {
+        currentHealth = currentHealth-damageAmount;
+        if(currentHealth < 0) {
+            parent.killUnit(this);
+        }
+    }
+    
     public void setPlayerOwned(boolean po) {
         playerOwned = po;
     }

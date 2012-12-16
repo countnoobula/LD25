@@ -52,7 +52,7 @@ public class HandlerUnits {
         unitArcher.playerOwned = false;
         unitMap.put(2, unitArcher);
 
-        updateUnitPositions();
+        updateCurrentUnits();
     }
 
     public boolean isUnitsSelected() {
@@ -123,7 +123,7 @@ public class HandlerUnits {
                 currentUnitArray[rows][cols] = unitArray[parent.handlerPlayer.xPos + rows][parent.handlerPlayer.yPos + cols];
             }
         }
-        needsUpdate = true;
+        renderCurrentUnits();
     }
 
     public void renderCurrentUnits() {
@@ -149,9 +149,7 @@ public class HandlerUnits {
     }
 
     public void render(Graphics g) {
-        updateUnitPositions();
         updateCurrentUnits();
-        renderCurrentUnits();
         g.drawImage(unitRender, 0, 0, parent.getMainWindow());
     }
 
@@ -250,5 +248,22 @@ public class HandlerUnits {
             return true;
         }
         return getUnit(x, y).isPlayerOwned();
+    }
+
+    public void killUnit(Unit unitToKill) {
+            Set keys = unitMap.keySet();
+            Iterator i = keys.iterator();
+
+            int entryKey = 0;
+            Unit entryUnit = null;
+            while(i.hasNext()) {
+                entryKey = (int) i.next();
+                entryUnit = unitMap.get(entryKey);
+                if(unitArray[entryUnit.getLocation().x][entryUnit.getLocation().y] == unitToKill) {
+                    unitMap.remove(entryKey);//ah fuck, brainfart D:
+                    break;
+                }
+            }
+            updateUnitPositions();            
     }
 }
