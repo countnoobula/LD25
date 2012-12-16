@@ -223,7 +223,7 @@ public class HandlerUnits {
     public BufferedImage getHealthBar(Unit unitToMeasure) {
         BufferedImage healthBar = new BufferedImage(32, 4, BufferedImage.TYPE_INT_RGB);
         Graphics g = healthBar.createGraphics();
-        
+
         /* 
          * Changed the calculations for the healthbars.
          * It just does (32*curHealth) / maxHealth, so it gives the width of the healthbar to use.
@@ -231,7 +231,7 @@ public class HandlerUnits {
          *      Or just do in a line below : unitToMeasure.currentHealth = 40 (for example) (and don't forget to remove it :p)
          */
         //greenWidth = (int) (((32 * unitToMeasure.getCurrentHealth()) / unitToMeasure.getMaxHealth()));
-        int greenWidth = (int)(((32 * unitToMeasure.getCurrentHealth()) / unitToMeasure.getMaxHealth()));
+        int greenWidth = (int) (((32 * unitToMeasure.getCurrentHealth()) / unitToMeasure.getMaxHealth()));
 
         g.setColor(Color.GREEN);
         g.fillRect(0, 0, greenWidth, 4);
@@ -251,19 +251,19 @@ public class HandlerUnits {
     }
 
     public void killUnit(Unit unitToKill) {
-            Set keys = unitMap.keySet();
-            Iterator i = keys.iterator();
+        Set keys = unitMap.keySet();
+        Iterator i = keys.iterator();
 
-            int entryKey = 0;
-            Unit entryUnit = null;
-            while(i.hasNext()) {
-                entryKey = (int) i.next();
-                entryUnit = unitMap.get(entryKey);
-                if(unitArray[entryUnit.getLocation().x][entryUnit.getLocation().y] == unitToKill) {
-                    unitMap.remove(entryKey);//ah fuck, brainfart D:
-                    break;
-                }
+        int entryKey = 0;
+        Unit entryUnit = null;
+        while(i.hasNext()) {
+            entryKey = (int) i.next();
+            entryUnit = unitMap.get(entryKey);
+            if(unitArray[entryUnit.getLocation().x][entryUnit.getLocation().y] == unitToKill) {
+                unitMap.remove(entryKey);
+                break;
             }
-            updateUnitPositions();            
+        }
+        updateUnitPositions();
     }
 }
