@@ -93,7 +93,7 @@ public class HandlerUnits {
     }
 
     public boolean tileHasUnit(int x, int y) {
-        if(currentUnitArray[x][y] != null) {
+        if(unitArray[x][y] != null) {
             return true;
         }
         return false;

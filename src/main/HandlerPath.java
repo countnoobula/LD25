@@ -32,39 +32,56 @@ public class HandlerPath implements Runnable {
     synchronized public void run(){
         System.out.println("Movement started");
         
-        ArrayList<Integer> dist = new ArrayList<Integer>();
+        ArrayList<Integer> dist = new ArrayList<>();
         dist.add(dest[0] - source[0]);
         dist.add(dest[1] - source[1]);
         
+        int tempsrc[] = source;
+        
+        if (!parent.handlerMap.isOccupiable(dest[0], dest[1])){
+            System.out.println("Tile not occupiable!");
+            return;
+        }
+        
         while (dist.get(0) != 0 || dist.get(1) != 0 ){
-            ArrayList<ArrayList<ArrayList<Integer>>> surrounds = UtilGetSurroundings.getSurroundings(source, xMods, yMods);
-            //for (int x=0; x < surrounds.size(); x++){
-            //    System.out.println(surrounds.get(x));
-            //}
+            
+            ArrayList<ArrayList<ArrayList<Integer>>> surrounds = UtilGetSurroundings.getSurroundings(tempsrc, xMods, yMods);
+            for (int x=0; x < surrounds.size(); x++){
+                System.out.println(surrounds.get(x));
+            }
+            
+            tempsrc = source;
             
             if (dist.get(0) < 0){
-                source[0]--;
-                dist.set(0,dest[0] - source[0]);
+                tempsrc[0] = source[0] - 1;
+                dist.set(0,dest[0] - tempsrc[0]);
             }
             else if (dist.get(0) > 0){
-                source[0]++;
-                dist.set(0,dest[0] - source[0]);
+                tempsrc[0] = source[0] + 1;
+                dist.set(0,dest[0] - tempsrc[0]);
             }
             if (dist.get(1) < 0){
-                source[1]--;
-                dist.set(1,dest[1] - source[1]);
+                tempsrc[1] = source[0] - 1;
+                dist.set(1,dest[1] - tempsrc[1]);
             }
             else if(dist.get(1) > 0){
-                source[1]++;
-                dist.set(1,dest[1] - source[1]);
+                tempsrc[1] = source[1] + 1;
+                dist.set(1,dest[1] - tempsrc[1]);
             }
-            movable.setLocation(source[0], source[1]);
-            parent.parent.repaint();
+            
+            if (parent.handlerMap.isOccupiable(tempsrc[0], tempsrc[1])){
+                movable.setLocation(tempsrc[0], tempsrc[1]);
+                parent.parent.repaint();
+            }
+            
+            System.out.println(dist);
+            
             try {
                 this.wait(100);
             } catch (InterruptedException e) {
             }
         }
+        System.out.println("Movement end");
         
     }
 }

@@ -24,6 +24,14 @@ public class HandlerMap {
         currentView = new BufferedImage(640, 480, BufferedImage.TYPE_INT_RGB);
     }
 
+    public boolean isOccupiable(int x, int y){
+        if (canWalk(x,y)){
+            if (!parent.handlerUnits.isOccupied(x, y)){
+                return true;
+            } else{ return false; }
+        } else{ return false; }
+    }
+
     private void populateMap() {
         for(int i = 0; i < 50; i++) {
             for(int j = 0; j < 50; j++) {
@@ -110,7 +118,7 @@ public class HandlerMap {
     }
 
     public boolean canWalk(int x, int y) {
-        return parent.handlerTiles.getTile(currentMapArray[y][x]).isPassable();
+        return parent.handlerTiles.getTile(fullMapArray[y][x]).isPassable();
     }
 
     public BufferedImage getCurrentView() {
