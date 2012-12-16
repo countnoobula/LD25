@@ -58,7 +58,7 @@ public class HandlerPlayer {
                     parent.handlerUnits.moveSelected((x+parent.handlerPlayer.xPos), (y+parent.handlerPlayer.yPos));
                     System.out.println("moving friendly");
                 } else {
-                    parent.handlerUnits.attackSelected((x+parent.handlerPlayer.xPos), (y+parent.handlerPlayer.yPos));
+                    //parent.handlerUnits.attackSelected((x+parent.handlerPlayer.xPos), (y+parent.handlerPlayer.yPos));
                     System.out.println("attacking enemy");
                 }
             } else {
