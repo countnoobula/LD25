@@ -26,7 +26,7 @@ public class HandlerUnits {
 
     public HandlerUnits(GuiGame parent) {
         this.parent = parent;
-        currentUnitArray = new Unit[15][20];
+        currentUnitArray = new Unit[20][15];
         unitArray = new Unit[50][50];
         unitTypeMap = new HashMap<>();
         unitMap = new HashMap<>();
@@ -118,8 +118,8 @@ public class HandlerUnits {
 
     public void updateCurrentUnits() {
         updateUnitPositions();
-        for(int rows = 0; rows < 15; rows++) {
-            for(int cols = 0; cols < 20; cols++) {
+        for(int cols = 0; cols < 15; cols++) {
+            for(int rows = 0; rows < 20; rows++) {
                 currentUnitArray[rows][cols] = unitArray[parent.handlerPlayer.xPos + rows][parent.handlerPlayer.yPos + cols];
             }
         }
@@ -129,8 +129,8 @@ public class HandlerUnits {
     public void renderCurrentUnits() {
         unitRender = new BufferedImage(640, 480, BufferedImage.TYPE_INT_ARGB);
         Graphics g = unitRender.createGraphics();
-        for(int rows = 0; rows < 15; rows++) {
-            for(int cols = 0; cols < 20; cols++) {
+        for(int cols = 0; cols < 15; cols++) {
+            for(int rows = 0; rows < 20; rows++) {
                 if(currentUnitArray[rows][cols] != null && getSprite(currentUnitArray[rows][cols].getID()) != null) {
                     g.drawImage(getSprite(currentUnitArray[rows][cols].getID()), rows * 32, cols * 32, parent);
                     if(currentUnitArray[rows][cols].isSelected()) {

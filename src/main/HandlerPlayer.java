@@ -11,29 +11,29 @@ public class HandlerPlayer {
     }
 
     public void moveUp() {
-        if(xPos != 0) {
-            xPos--;
-        }
-        parent.handlerMap.makeDirty();
-    }
-
-    public void moveDown() {
-        if(xPos != 49) {
-            xPos++;
-        }
-        parent.handlerMap.makeDirty();
-    }
-
-    public void moveLeft() {
         if(yPos != 0) {
             yPos--;
         }
         parent.handlerMap.makeDirty();
     }
 
-    public void moveRight() {
+    public void moveDown() {
         if(yPos != 49) {
             yPos++;
+        }
+        parent.handlerMap.makeDirty();
+    }
+
+    public void moveLeft() {
+        if(xPos != 0) {
+            xPos--;
+        }
+        parent.handlerMap.makeDirty();
+    }
+
+    public void moveRight() {
+        if(xPos != 49) {
+            xPos++;
         }
         parent.handlerMap.makeDirty();
     }

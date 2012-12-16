@@ -31,9 +31,11 @@ public class InputKeyboard implements KeyListener {
                 case Defines.GAME:
                     switch(keyCode) {
                         case 65: //a
+                        case 81: // q
                             parent.screenGame.handlerPlayer.moveLeft();
                             break;
                         case 87: //w
+                        case 90: //z
                             parent.screenGame.handlerPlayer.moveUp();
                             break;
                         case 83: //s

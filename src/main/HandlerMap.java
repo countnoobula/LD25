@@ -17,7 +17,7 @@ public class HandlerMap {
     
     public HandlerMap(GuiGame parent) {
         this.parent = parent;
-        currentMapArray = new int[15][20];
+        currentMapArray = new int[20][15];
         fullMapArray = new int[50][50];
         loadMap(new File("map.txt"));
         updateCurrentMap();
@@ -95,16 +95,16 @@ public class HandlerMap {
     }
 
     public void updateCurrentMap() {
-        if((parent.handlerPlayer.xPos + 15) > 50) {
-            parent.handlerPlayer.xPos = (50 - 15);
+        if((parent.handlerPlayer.xPos + 20) > 50) {
+            parent.handlerPlayer.xPos = (50 - 20);
         }
-        if((parent.handlerPlayer.yPos + 20) > 50) {
-            parent.handlerPlayer.yPos = (50 - 20);
+        if((parent.handlerPlayer.yPos + 15) > 50) {
+            parent.handlerPlayer.yPos = (50 - 15);
         }
 
-        for(int i = 0; i < 15; i++) {
-            for(int j = 0; j < 20; j++) {
-                currentMapArray[i][j] = fullMapArray[parent.handlerPlayer.xPos + i][parent.handlerPlayer.yPos + j];
+        for(int y = 0; y < 15; y++) {
+            for(int x = 0; x < 20; x++) {
+                currentMapArray[x][y] = fullMapArray[parent.handlerPlayer.xPos + x][parent.handlerPlayer.yPos + y];
             }
         }
     }
@@ -124,8 +124,8 @@ public class HandlerMap {
         if(mapLoaded) {
             for(int cols = 0; cols < 20; cols++) {
                 for(int rows = 0; rows < 15; rows++) {
-                    if(parent.handlerTiles.getTile(currentMapArray[rows][cols]) != null) {
-                        g.drawImage(parent.handlerTiles.getTile(currentMapArray[rows][cols]).getTexture(), cols * 32, rows * 32, parent);
+                    if(parent.handlerTiles.getTile(currentMapArray[cols][rows]) != null) {
+                        g.drawImage(parent.handlerTiles.getTile(currentMapArray[cols][rows]).getTexture(), cols * 32, rows * 32, parent);
                     } else {
                         System.out.println(rows + ";" + cols + " is null.");
                     }
