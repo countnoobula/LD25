@@ -17,7 +17,6 @@ public class HandlerTiles {
     public void registerTile(Tile tileToRegister) {
         if(tileMap.get(tileToRegister.getID()) == null) {
             tileMap.put(tileToRegister.getID(), tileToRegister);
-            System.out.println(tileToRegister.getName() + " registered");
         }
     }
     

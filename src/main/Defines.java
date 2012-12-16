@@ -9,4 +9,8 @@ public class Defines {
     
     public static final int MENU = 1;
     public static final int GAME = 2;
+    
+    public static final int MELEE = 1;
+    public static final int RANGED = 2;
+    public static final int MAGIC = 3;
 }
