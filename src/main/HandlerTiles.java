@@ -11,7 +11,7 @@ public class HandlerTiles {
         this.parent = parent;
         new TileWater(this);
         new TileConcrete(this);
-        new TileDirt(this);
+        new TileGrass(this);
     }
     
     public void registerTile(Tile tileToRegister) {
