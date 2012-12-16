@@ -72,6 +72,36 @@ public class Unit {
     }
 
     public void attack(int x, int y) {
+        Unit targetUnit = parent.getUnit(x, y);
+        int damageAmount = getDamage();
+        
+        switch(targetUnit.getDamageType()) {
+            case Defines.MELEE:
+                if(getDamageType() == Defines.RANGED) {
+                    damageAmount = (int)(damageAmount * 0.8);
+                }
+                if(getDamageType() == Defines.MAGIC) {
+                    damageAmount = (int)(damageAmount * 1.2);
+                }
+                break;
+            case Defines.RANGED:
+                if(getDamageType() == Defines.MELEE) {
+                    damageAmount = (int)(damageAmount * 0.8);
+                }
+                if(getDamageType() == Defines.MAGIC) {
+                    damageAmount = (int)(damageAmount * 1.2);
+                }
+                break;
+            case Defines.MAGIC:
+                if(getDamageType() == Defines.MELEE) {
+                    damageAmount = (int)(damageAmount * 0.8);
+                }
+                if(getDamageType() == Defines.RANGED) {
+                    damageAmount = (int)(damageAmount * 1.2);
+                }
+                break;
+        }
+        
         //attack path calculation
         System.out.println("Attacking " + x + ";" + y);
     }
