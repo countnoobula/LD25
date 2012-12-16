@@ -13,6 +13,8 @@ public class Unit {
     protected int damageType = 0;
     protected int damage = 0;
     protected boolean playerOwned = true;
+    protected int range = 0;
+    protected int speed = 1;
 
     public Unit(HandlerUnits parent) {
         this.parent = parent;
@@ -77,7 +79,15 @@ public class Unit {
     public int getDamage() {
         return damage;
     }
-
+    
+    public int getRange() {
+        return range;
+    }
+    
+    public int getSpeed() {
+        return 1;
+    }
+        
     public void attack(int x, int y) {
         Unit targetUnit = parent.getUnit(x, y);
         int damageAmount = getDamage();
