@@ -200,6 +200,23 @@ public class HandlerUnits {
         }
     }
     
+    public void attackSelected(int x, int y) {
+        if(isUnitsSelected()) {
+            Set keys = unitMap.keySet();
+            Iterator i = keys.iterator();
+            
+            int entryKey = 0;
+            Unit entryUnit = null;
+            while(i.hasNext()) {
+                entryKey = (int) i.next();
+                entryUnit = unitMap.get(entryKey);
+                if(unitArray[entryUnit.getLocation().x][entryUnit.getLocation().y].isSelected()) {
+                    unitArray[entryUnit.getLocation().x][entryUnit.getLocation().y].attack(x, y);
+                }
+            }
+        }
+    }
+    
     public BufferedImage getHealthBar(Unit unitToMeasure) {
         BufferedImage healthBar = new BufferedImage(32, 4, BufferedImage.TYPE_INT_RGB);
         Graphics g = healthBar.createGraphics();
@@ -221,5 +238,12 @@ public class HandlerUnits {
     
     public GuiGame getGuiGame() {
         return parent;
+    }
+
+    public boolean isFriendly(int x, int y) {
+        if(!isOccupied(x, y)) {
+            return true;
+        }
+        return getUnit(x, y).isPlayerOwned();
     }
 }

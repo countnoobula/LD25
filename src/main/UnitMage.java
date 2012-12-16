@@ -7,6 +7,8 @@ public class UnitMage extends Unit {
         this.parent = parent;
         maxHealth = 80;
         currentHealth = 120;
+        damageType = Defines.MAGIC;
+        damage = 20;
     }
 
     @Override

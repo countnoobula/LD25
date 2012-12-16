@@ -11,6 +11,9 @@ public class Unit {
     protected int currentHealth = 0;
     protected int mapID = 0;
     protected boolean selected = false;
+    protected int damageType = 0;
+    protected int damage = 0;
+    protected boolean playerOwned = true;
 
     public Unit(HandlerUnits parent) {
         this.parent = parent;
@@ -28,6 +31,10 @@ public class Unit {
         return currentHealth;
     }
 
+    public void setPlayerOwned(boolean po) {
+        playerOwned = po;
+    }
+    
     public int getID() {
         return 0;
     }
@@ -55,5 +62,21 @@ public class Unit {
 
     public boolean isSelected() {
         return selected;
+    }
+    
+    public int getDamageType() {
+        return damageType;
+    }
+    
+    public int getDamage() {
+        return damage;
+    }
+
+    public void attack(int x, int y) {
+        //attack path calculation
+    }
+
+    public boolean isPlayerOwned() {
+        return playerOwned;
     }
 }
