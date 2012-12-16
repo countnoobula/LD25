@@ -88,6 +88,10 @@ public class Unit {
         return 1;
     }
         
+    public boolean isInRange(int x, int y) {
+        return true;
+    }
+    
     public void attack(int x, int y) {
         Unit targetUnit = parent.getUnit(x, y);
         int damageAmount = getDamage();
@@ -120,6 +124,10 @@ public class Unit {
         }
         
         //attack path calculation
+        if(isInRange(x, y)) {
+            parent.getUnit(x, y).inflictDamage(30);
+            System.out.println("is in target");
+        }
         System.out.println("Attacking " + x + ";" + y);
     }
 
