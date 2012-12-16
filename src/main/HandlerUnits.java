@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
@@ -201,6 +202,7 @@ public class HandlerUnits {
                 }
             }
         }
+       // parent.parent.repaint();
     }
 
     public void attackSelected(int x, int y) {

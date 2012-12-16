@@ -1,16 +1,70 @@
 package main;
 
+import java.util.ArrayList;
+
 public class HandlerPath implements Runnable {
 
     protected GuiGame parent;
+    
+    protected Unit movable;
+    protected int[] source = {-1,-1};
+    protected int[] dest = {-1,-1};
+    
+    // Change at own risk for FOV
+    protected int[] xMods = {1,2};
+    protected int[] yMods = {1,2};
+    
 
-    public HandlerPath(GuiGame parent, Unit unit, int initialY, int initialX, int destinationX, int destinationY) {
+    public HandlerPath(GuiGame parent, Unit unit, int initialX, int initialY, int destinationX, int destinationY) {
         this.parent = parent;
+        
+        movable = unit;
+        source[0] = initialX;
+        source[1] = initialY;
+        
+        dest[0] = destinationX;
+        dest[1] = destinationY;
+        
         System.out.println("Moving from " + initialX + ";" + initialY + " to " + destinationX + ";" + destinationY);
     }
 
     @Override
-    public void run() {
+    synchronized public void run(){
         System.out.println("Movement started");
+        
+        ArrayList<Integer> dist = new ArrayList<Integer>();
+        dist.add(dest[0] - source[0]);
+        dist.add(dest[1] - source[1]);
+        
+        while (dist.get(0) != 0 || dist.get(1) != 0 ){
+            ArrayList<ArrayList<ArrayList<Integer>>> surrounds = UtilGetSurroundings.getSurroundings(source, xMods, yMods);
+            //for (int x=0; x < surrounds.size(); x++){
+            //    System.out.println(surrounds.get(x));
+            //}
+            
+            if (dist.get(0) < 0){
+                source[0]--;
+                dist.set(0,dest[0] - source[0]);
+            }
+            else if (dist.get(0) > 0){
+                source[0]++;
+                dist.set(0,dest[0] - source[0]);
+            }
+            if (dist.get(1) < 0){
+                source[1]--;
+                dist.set(1,dest[1] - source[1]);
+            }
+            else if(dist.get(1) > 0){
+                source[1]++;
+                dist.set(1,dest[1] - source[1]);
+            }
+            movable.setLocation(source[0], source[1]);
+            parent.parent.repaint();
+            try {
+                this.wait(100);
+            } catch (InterruptedException e) {
+            }
+        }
+        
     }
 }
