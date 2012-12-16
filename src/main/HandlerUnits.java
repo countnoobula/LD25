@@ -44,8 +44,13 @@ public class HandlerUnits {
         registerUnitType(new UnitMage(this));
         
         UnitSword unitSword = new UnitSword(this);
-        unitSword.setLocation(2, 4);
+        unitSword.setLocation(4, 2);
         unitMap.put(1, unitSword);
+        
+        UnitArcher unitArcher = new UnitArcher(this);
+        unitArcher.setLocation(4, 5);
+        unitArcher.playerOwned = false;
+        unitMap.put(2, unitArcher);
         
         updateUnitPositions();
     }
@@ -87,14 +92,14 @@ public class HandlerUnits {
     }
     
     public boolean tileHasUnit(int x, int y) {
-        if(currentUnitArray[y][x] != null) {
+        if(currentUnitArray[x][y] != null) {
             return true;
         }
         return false;
     }
     
     public void selectUnit(int x, int y) {
-        currentUnitArray[y][x].select();
+        currentUnitArray[x][y].select();
     }
     
     public Unit getUnit(int x, int y) {

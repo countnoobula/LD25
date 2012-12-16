@@ -73,6 +73,7 @@ public class Unit {
 
     public void attack(int x, int y) {
         //attack path calculation
+        System.out.println("Attacking " + x + ";" + y);
     }
 
     public boolean isPlayerOwned() {

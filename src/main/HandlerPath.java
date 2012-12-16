@@ -6,11 +6,11 @@ public class HandlerPath implements Runnable {
 
     public HandlerPath(GuiGame parent, Unit unit, int initialY, int initialX, int destinationX, int destinationY) {
         this.parent = parent;
-        System.out.println("moving from " + initialX + ";" + initialY + " to " + destinationX + ";" + destinationY);
+        System.out.println("Moving from " + initialX + ";" + initialY + " to " + destinationX + ";" + destinationY);
     }
 
     @Override
     public void run() {
-        System.out.println("movement started");
+        System.out.println("Movement started");
     }
 }
