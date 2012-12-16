@@ -9,7 +9,6 @@ public class Unit {
     protected int unitY = 0;
     protected int maxHealth = 0;
     protected int currentHealth = 0;
-    protected int mapID = 0;
     protected boolean selected = false;
     protected int damageType = 0;
     protected int damage = 0;
@@ -49,7 +48,7 @@ public class Unit {
     }
 
     public void move(int x, int y) {
-        new Thread(new HandlerPath(parent.getGuiGame(), mapID, unitX, unitY, x, y)).start();
+        new Thread(new HandlerPath(parent.getGuiGame(), this, unitX, unitY, x, y)).start();
     }
 
     public void select() {
