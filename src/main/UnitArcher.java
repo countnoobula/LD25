@@ -9,6 +9,7 @@ public class UnitArcher extends Unit {
         currentHealth = 120;
         damageType = Defines.RANGED;
         damage = 20;
+        range = 2;
     }
 
     @Override

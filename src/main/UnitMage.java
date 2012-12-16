@@ -9,6 +9,7 @@ public class UnitMage extends Unit {
         currentHealth = 120;
         damageType = Defines.MAGIC;
         damage = 20;
+        range = 2;
     }
 
     @Override

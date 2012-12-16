@@ -142,7 +142,6 @@ public class HandlerUnits {
             }
         }
         needsUpdate = false;
-        parent.getMainWindow().repaint();
     }
 
     public boolean needsUpdate() {

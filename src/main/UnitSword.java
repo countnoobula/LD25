@@ -9,6 +9,7 @@ public class UnitSword extends Unit {
         currentHealth = 120;
         damageType = Defines.MELEE;
         damage = 20;
+        range = 1;
     }
     
     @Override
