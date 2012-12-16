@@ -1,18 +1,10 @@
 package main;
 
-import java.awt.Point;
-
 public class HandlerPlayer {
 
     protected GuiGame parent;
     protected int xPos = 0;
     protected int yPos = 0;
-    private boolean selectedTile = false;
-    private int selectedTileX = 0;
-    private int selectedTileY = 0;
-    private boolean commandTile = false;
-    private int commandTileX = 0;
-    private int commandTileY = 0;
 
     public HandlerPlayer(GuiGame parent) {
         this.parent = parent;
@@ -46,18 +38,12 @@ public class HandlerPlayer {
         parent.handlerMap.makeDirty();
     }
 
-    public boolean hasSelectedTile() {
-        return selectedTile;
-    }
-
-    public Point getSelectedTile() {
-        return new Point(selectedTileX, selectedTileY);
-    }
-
     public void selectSpot(int x, int y) {
         System.out.println(x + ";" + y);
         if(parent.handlerUnits.tileHasUnit(x, y)) {
-            parent.handlerUnits.selectUnit(x, y);
+            if(parent.handlerUnits.isFriendly(x+xPos, y+yPos)) {
+                parent.handlerUnits.selectUnit(x, y);
+            }
         } else {
             parent.handlerUnits.deselectAll();
         }
@@ -65,22 +51,17 @@ public class HandlerPlayer {
         parent.getMainWindow().repaint();
     }
     
-    public void clearSelection() {
-       selectedTile = false;
-    }
-
-    public boolean hasCommandTile() {
-        return commandTile;
-    }
-    
-    public Point getCommandTile() {
-        return new Point(commandTileX, commandTileY);
-    }
-    
     public void commandSpot(int x, int y) {
         if(parent.handlerUnits.isUnitsSelected()) {
-            parent.handlerUnits.moveSelected((x+parent.handlerPlayer.xPos), (y+parent.handlerPlayer.yPos));
-            
+            if(parent.handlerUnits.isOccupied((x+parent.handlerPlayer.xPos), (y+parent.handlerPlayer.yPos))) {
+                if(parent.handlerUnits.isFriendly(x+parent.handlerPlayer.xPos, y+parent.handlerPlayer.yPos)) {
+                    parent.handlerUnits.moveSelected((x+parent.handlerPlayer.xPos), (y+parent.handlerPlayer.yPos));
+                } else {
+                    parent.handlerUnits.attackSelected((x+parent.handlerPlayer.xPos), (y+parent.handlerPlayer.yPos));
+                }
+            } else {
+                parent.handlerUnits.moveSelected((x+parent.handlerPlayer.xPos), (y+parent.handlerPlayer.yPos));
+            }
         }
     }
 }

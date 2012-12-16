@@ -7,6 +7,8 @@ public class UnitArcher extends Unit {
         this.parent = parent;
         maxHealth = 100;
         currentHealth = 120;
+        damageType = Defines.RANGED;
+        damage = 20;
     }
 
     @Override

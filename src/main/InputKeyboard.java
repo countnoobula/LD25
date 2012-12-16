@@ -48,7 +48,6 @@ public class InputKeyboard implements KeyListener {
                         case 32: //space
                             break;
                     }
-                    parent.screenGame.handlerPlayer.clearSelection();
                     break;
                 case Defines.MENU:
                     switch(keyCode) {

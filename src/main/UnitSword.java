@@ -7,6 +7,8 @@ public class UnitSword extends Unit {
         this.parent = parent;
         maxHealth = 120;
         currentHealth = 120;
+        damageType = Defines.MELEE;
+        damage = 20;
     }
     
     @Override
