@@ -13,4 +13,6 @@ public class Defines {
     public static final int MELEE = 1;
     public static final int RANGED = 2;
     public static final int MAGIC = 3;
+    
+    public static boolean GAME_RUNNING = true;
 }

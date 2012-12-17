@@ -3,6 +3,7 @@ package main;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 public class HandlerPlayer {
 
@@ -10,6 +11,7 @@ public class HandlerPlayer {
     protected int xPos = 0;
     protected int yPos = 0;
     protected int cash = 0;
+    protected BufferedImage miniMap;
 
     public HandlerPlayer(GuiGame parent) {
         this.parent = parent;
@@ -80,6 +82,9 @@ public class HandlerPlayer {
         g.setColor(Color.BLUE);
         g.fillRect(640, 0, 200, 200);
         
+        g.setColor(Color.GREEN);
+        g.fillRect(690, 50, 100, 100);
+        
         g.setColor(Color.BLACK);
         g.fillRect(640, 200, 200, 36);
         
@@ -87,6 +92,10 @@ public class HandlerPlayer {
         g.setFont(new Font("Serif", Font.PLAIN, 14));
         g.drawString("Cash: $" + getCash() + ".00", 660, 216);
         g.drawString("Unit Count: " + parent.handlerUnits.getUnitCount(), 660, 232);
+    }
+    
+    private void renderMinimap() {
+        //render to bufferedimage
     }
     
     public int getCash() {

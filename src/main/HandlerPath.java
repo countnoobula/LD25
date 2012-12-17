@@ -14,6 +14,7 @@ public class HandlerPath implements Runnable {
     protected int[] xMods = {1,2};
     protected int[] yMods = {1,2};
     
+    protected boolean done = false;
 
     public HandlerPath(GuiGame parent, Unit unit, int initialX, int initialY, int destinationX, int destinationY) {
         this.parent = parent;
@@ -27,10 +28,19 @@ public class HandlerPath implements Runnable {
         
         System.out.println("Moving from " + initialX + ";" + initialY + " to " + destinationX + ";" + destinationY);
     }
+    
+    public boolean isDone() {
+        return done;
+    }
+    
+    public void runTick() {
+        //code here
+    }
 
     @Override
     synchronized public void run(){
         System.out.println("Movement started");
+        done = false;
         
         ArrayList<Integer> dist = new ArrayList<>();
         dist.add(dest[0] - source[0]);
@@ -82,6 +92,6 @@ public class HandlerPath implements Runnable {
             }
         }
         System.out.println("Movement end");
-        
+        done = true;
     }
 }
