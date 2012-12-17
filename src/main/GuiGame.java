@@ -29,5 +29,7 @@ public class GuiGame extends GuiScreen {
         g.drawImage(handlerMap.getCurrentView(), 0, 0, parent);
 
         handlerUnits.render(g);
+        
+        handlerPlayer.renderGUI(g);
     }
 }

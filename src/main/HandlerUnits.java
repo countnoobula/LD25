@@ -268,4 +268,22 @@ public class HandlerUnits {
         }
         updateUnitPositions();
     }
+
+    public int getUnitCount() {
+        Set keys = unitMap.keySet();
+        Iterator i = keys.iterator();
+
+        int unitCount = 0;
+        
+        int entryKey = 0;
+        Unit entryUnit = null;
+        while(i.hasNext()) {
+            entryKey = (int) i.next();
+            entryUnit = unitMap.get(entryKey);
+            if(unitArray[entryUnit.getLocation().x][entryUnit.getLocation().y].isPlayerOwned()) {
+                unitCount++;
+            }
+        }
+        return unitCount;
+    }
 }

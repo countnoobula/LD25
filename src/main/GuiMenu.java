@@ -26,13 +26,13 @@ public class GuiMenu extends GuiScreen {
 
     @Override
     public void render(Graphics g) {
-        g.clearRect(0, 0, 640, 480);
+        g.clearRect(0, 0, 840, 480);
         g.setColor(Color.BLACK);
-        g.fillRect(0, 0, 640, 480);
+        g.fillRect(0, 0, 840, 480);
         g.setFont(aerial);
         
         FontMetrics metrics = g.getFontMetrics(aerial);
         g.setColor(new Color(0, 200, 255));
-        g.drawString("Press space to begin...", 198, 375);
+        g.drawString("Press space to begin...", 420 - metrics.stringWidth("Press space to begin...") / 2, 375);
     }
 }

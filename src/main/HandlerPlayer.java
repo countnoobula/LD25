@@ -1,10 +1,15 @@
 package main;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+
 public class HandlerPlayer {
 
     protected GuiGame parent;
     protected int xPos = 0;
     protected int yPos = 0;
+    protected int cash = 0;
 
     public HandlerPlayer(GuiGame parent) {
         this.parent = parent;
@@ -66,5 +71,29 @@ public class HandlerPlayer {
                 System.out.println("moving empty " + (x+parent.handlerPlayer.xPos) + ";" + (y+parent.handlerPlayer.yPos));
             }
         }
+    }
+    
+    public void renderGUI(Graphics g) {
+        g.setColor(Color.RED);
+        g.fillRect(640, 0, 200, 480);
+        
+        g.setColor(Color.BLUE);
+        g.fillRect(640, 0, 200, 200);
+        
+        g.setColor(Color.BLACK);
+        g.fillRect(640, 200, 200, 36);
+        
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Serif", Font.PLAIN, 14));
+        g.drawString("Cash: $" + getCash() + ".00", 660, 216);
+        g.drawString("Unit Count: " + parent.handlerUnits.getUnitCount(), 660, 232);
+    }
+    
+    public int getCash() {
+        return cash;
+    }
+    
+    public void setCash(int cash) {
+        this.cash = cash;
     }
 }
