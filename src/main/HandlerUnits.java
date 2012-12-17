@@ -1,7 +1,6 @@
 package main;
 
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
@@ -10,7 +9,6 @@ import java.util.Set;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import resources.Resources;
-import main.Unit;
 
 public class HandlerUnits {
 
@@ -26,6 +24,7 @@ public class HandlerUnits {
     protected BufferedImage spriteMage;
     
     protected HandlerMovement handlerMovement = new HandlerMovement(this);
+    protected Thread movementThread = new Thread(handlerMovement);
 
     public HandlerUnits(GuiGame parent) {
         this.parent = parent;
@@ -34,6 +33,8 @@ public class HandlerUnits {
         unitTypeMap = new HashMap<>();
         unitMap = new HashMap<>();
 
+        movementThread.start();
+        
         try {
             spriteSword = ImageIO.read(Resources.class.getResourceAsStream("UnitSword.png"));
             spriteArcher = ImageIO.read(Resources.class.getResourceAsStream("UnitArcher.png"));

@@ -32,6 +32,7 @@ public class HandlerMovement implements Runnable {
 
     @Override
     public void run() {
+        System.out.println("Movement thread started");
         long startTime = 0;
         while(Defines.GAME_RUNNING) {
             startTime = System.currentTimeMillis();
