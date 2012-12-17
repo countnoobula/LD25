@@ -32,8 +32,6 @@ public class HandlerUnits {
         unitArray = new Unit[50][50];
         unitTypeMap = new HashMap<>();
         unitMap = new HashMap<>();
-
-        movementThread.start();
         
         try {
             spriteSword = ImageIO.read(Resources.class.getResourceAsStream("UnitSword.png"));
@@ -57,6 +55,8 @@ public class HandlerUnits {
         unitMap.put(2, unitArcher);
 
         updateCurrentUnits();
+        
+        movementThread.start();
     }
 
     public boolean isUnitsSelected() {

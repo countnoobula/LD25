@@ -24,14 +24,14 @@ public class HandlerMovement implements Runnable {
         }
     }
 
-    private void executeThreads() {
+    synchronized private void executeThreads() {
         for(int i = 0; i < movementThreads.size(); i++) {
             movementThreads.get(i).runTick();
         }
     }
 
     @Override
-    public void run() {
+    synchronized public void run() {
         System.out.println("Movement thread started");
         long startTime = 0;
         while(Defines.GAME_RUNNING) {

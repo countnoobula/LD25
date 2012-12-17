@@ -12,6 +12,7 @@ public class GuiGame extends GuiScreen {
 
     public GuiGame(MainWindow parent) {
         this.parent = parent;
+        
     }
 
     @Override
