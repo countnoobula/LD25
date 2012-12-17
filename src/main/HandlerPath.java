@@ -2,7 +2,7 @@ package main;
 
 import java.util.ArrayList;
 
-public class HandlerPath implements Runnable {
+public class HandlerPath {
 
     protected GuiGame parent;
     protected Unit movable;
@@ -84,7 +84,6 @@ public class HandlerPath implements Runnable {
         done = true;
     }
 
-    @Override
     public void run() {
         System.out.println("Movement started");
         done = false;
