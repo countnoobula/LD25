@@ -57,7 +57,7 @@ public class Unit {
     }
 
     public void move(int x, int y) {
-        new Thread(new HandlerPath(parent.getGuiGame(), this, unitX, unitY, x, y)).start();
+        parent.handlerMovement.addMovementThread(new HandlerPath(parent.getGuiGame(), this, unitX, unitY, x, y));
     }
 
     public void select() {

@@ -4,13 +4,16 @@ import java.util.ArrayList;
 
 public class HandlerMovement implements Runnable {
 
+    protected HandlerUnits parent;
     protected ArrayList<HandlerPath> movementThreads;
 
-    public HandlerMovement() {
+    public HandlerMovement(HandlerUnits parent) {
+        this.parent = parent;
         movementThreads = new ArrayList<>();
     }
 
-    public void addMovementThread() {
+    public void addMovementThread(HandlerPath newPath) {
+        movementThreads.add(newPath);
     }
 
     private void removeCompletedThreads() {

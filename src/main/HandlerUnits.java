@@ -24,6 +24,8 @@ public class HandlerUnits {
     protected BufferedImage spriteSword;
     protected BufferedImage spriteArcher;
     protected BufferedImage spriteMage;
+    
+    protected HandlerMovement handlerMovement = new HandlerMovement(this);
 
     public HandlerUnits(GuiGame parent) {
         this.parent = parent;
