@@ -30,7 +30,7 @@ public class HandlerPath {
         return done;
     }
 
-   synchronized public void runTick() {
+    public void runTick() {
         System.out.println("Movement started");
         done = false;
 
@@ -76,7 +76,7 @@ public class HandlerPath {
             System.out.println(dist);
 
             try {
-                this.wait(100);
+                Thread.sleep(100);
             } catch(InterruptedException e) {
             }
         }
