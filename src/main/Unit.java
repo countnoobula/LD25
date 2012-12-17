@@ -15,9 +15,13 @@ public class Unit {
     protected boolean playerOwned = true;
     protected int range = 0;
     protected int speed = 1;
+    
+    protected int destX;
+    protected int destY;
 
     public Unit(HandlerUnits parent) {
         this.parent = parent;
+        new Thread(new HandlerPath(parent.getGuiGame(), this)).start();
     }
 
     public boolean canFly() {
@@ -57,7 +61,9 @@ public class Unit {
     }
 
     public void move(int x, int y) {
-        new Thread(new HandlerPath(parent.getGuiGame(), this, unitX, unitY, x, y)).start();
+        destX = x;
+        destY = y;
+        System.out.println(destX + "," + destY);
     }
 
     public void select() {
